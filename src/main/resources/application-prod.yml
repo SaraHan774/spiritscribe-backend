@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/spiritscribe
+    username: spiritscribe
+    password: ${DB_PASSWORD:change-me}
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    min-response-size: 2KB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+

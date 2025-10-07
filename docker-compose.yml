@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: spiritscribe-postgres
+    environment:
+      POSTGRES_DB: spiritscribe
+      POSTGRES_USER: spiritscribe
+      POSTGRES_PASSWORD: spiritscribe
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "spiritscribe"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    container_name: spiritscribe-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+
+volumes:
+  pgdata:
+  redisdata:
+
+

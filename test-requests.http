@@ -1,0 +1,15 @@
+### 헬스 체크
+GET http://localhost:8080/v1/health
+
+### 사용자 조회
+GET http://localhost:8080/v1/users/user123
+
+### 사용자 생성 (향후 구현)
+POST http://localhost:8080/v1/users
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "displayName": "테스트 사용자",
+  "email": "test@example.com"
+}

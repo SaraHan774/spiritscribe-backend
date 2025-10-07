@@ -1,0 +1,138 @@
+---
+alwaysApply: true
+---
+
+# SpiritScribe 백엔드 기술 스택 최종 정리
+
+## 🎯 핵심 기술 스택
+
+### **Backend Framework**
+- **Kotlin + Spring Boot 3.x** (최고 추천)
+  - Kotlin과 완벽한 호환성
+  - 풍부한 생태계와 검증된 안정성
+  - JVM 기반 높은 성능과 확장성
+  - Spring Security로 강력한 인증/인가
+  - Spring Data JPA로 데이터베이스 추상화
+  - Spring WebFlux로 비동기 처리 및 WebSocket 지원
+
+### **Database**
+- **PostgreSQL** (주 데이터베이스)
+  - JSON/JSONB 지원으로 유연한 스키마
+  - 공간 데이터 타입으로 위치 기반 검색 최적화
+  - 강력한 인덱싱과 쿼리 최적화
+  - ACID 트랜잭션 보장
+- **Redis** (캐싱 및 세션)
+  - 빠른 인메모리 캐싱
+  - 세션 관리
+  - 실시간 데이터 저장
+
+### **Cloud Infrastructure**
+- **AWS** (종합적 추천)
+  - ECS/Fargate: 컨테이너 오케스트레이션
+  - RDS: PostgreSQL 관리형 데이터베이스
+  - ElastiCache: Redis 관리형 서비스
+  - S3: 이미지 및 파일 저장
+  - CloudFront: CDN
+  - API Gateway: API 관리
+
+## 🛠️ 개발 도구 및 라이브러리
+
+### **Core Dependencies**
+- Spring Boot Starter Web
+- Spring Boot Starter Data JPA
+- Spring Boot Starter Security
+- Spring Boot Starter WebSocket
+- Spring Boot Starter Validation
+- PostgreSQL Driver
+- Spring Boot Starter Data Redis
+- JWT (JSON Web Token)
+
+### **Additional Libraries**
+- HikariCP (Connection Pooling)
+- Flyway (Database Migration)
+- Spring Actuator (Monitoring)
+- Micrometer (Metrics)
+- Logback (Logging)
+
+## 📊 성능 최적화 전략
+
+### **Database Optimization**
+- 복합 인덱스 활용: `(user_id, created_at)`, `(is_public, created_at)`
+- 공간 인덱스: 위치 기반 검색 최적화
+- 파티셔닝: 월별 체크인 데이터 분할
+- 연결 풀 최적화: HikariCP 설정
+
+### **Application Optimization**
+- JPA 지연 로딩 활용
+- 배치 처리로 통계 업데이트
+- Redis 캐싱으로 반복 쿼리 최적화
+- 이벤트 기반 아키텍처
+
+### **Caching Strategy**
+- 사용자 프로필: `user:{userId}`
+- 체크인 피드: `feed:{userId}:page:{page}`
+- 트렌딩 해시태그: `trending_hashtags`
+- 인기 체크인: `featured_checkins`
+
+## 🔒 보안 및 모니터링
+
+### **Security**
+- Spring Security + JWT 인증
+- Rate Limiting (Redis 기반)
+- 입력 검증 (Bean Validation)
+- SQL Injection 방지 (JPA 사용)
+- XSS 방지 (입력 데이터 이스케이핑)
+
+### **Monitoring**
+- Spring Actuator (Health Check)
+- AWS CloudWatch (메트릭 수집)
+- ELK Stack (로깅)
+- Prometheus + Grafana (성능 모니터링)
+
+## 🚀 배포 및 운영
+
+### **Containerization**
+- Docker 컨테이너화
+- Docker Compose (로컬 개발)
+- AWS ECS (프로덕션 배포)
+
+### **Database Management**
+- Flyway를 사용한 스키마 마이그레이션
+- 백업 및 복구 전략
+- 읽기 전용 복제본 활용
+
+### **Scaling Strategy**
+- 수평적 확장 (로드 밸런서)
+- 마이크로서비스 분할 가능성
+- CDN 활용 (CloudFront)
+- 데이터베이스 샤딩 (장기 계획)
+
+## 📈 확장성 고려사항
+
+### **Short-term (1-6개월)**
+- 단일 서비스 아키텍처
+- PostgreSQL + Redis
+- AWS ECS 배포
+
+### **Medium-term (6-12개월)**
+- 서비스 분할 (User, CheckIn, Notification)
+- 이벤트 기반 아키텍처
+- 읽기 전용 복제본
+
+### **Long-term (1년+)**
+- 마이크로서비스 아키텍처
+- 이벤트 소싱
+- CQRS 패턴 도입
+- 데이터베이스 샤딩
+
+## 💰 비용 최적화
+
+### **Development**
+- 로컬 개발 환경 (Docker Compose)
+- 개발용 AWS 리소스 최소화
+
+### **Production**
+- AWS RDS Reserved Instances
+- ElastiCache 최적화
+- S3 Intelligent Tiering
+- CloudFront 캐싱 활용
