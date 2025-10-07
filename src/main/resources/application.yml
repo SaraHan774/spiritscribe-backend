@@ -53,4 +53,17 @@ security:
     secret: change-me-in-prod
     access-token-ttl-seconds: 3600
 
+# OpenAPI/Swagger 설정
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    try-it-out-enabled: true
+  show-actuator: true
+  packages-to-scan: com.spiritscribe
+
 
