@@ -52,6 +52,15 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.12.3")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+    
+    // Spring Boot Admin
+    implementation("de.codecentric:spring-boot-admin-starter-client:3.2.3")
+    
+    // Thymeleaf (어드민 대시보드용)
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    
+    // Faker (가짜 데이터 생성용)
+    implementation("net.datafaker:datafaker:2.0.2")
 
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")

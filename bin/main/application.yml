@@ -66,4 +66,13 @@ springdoc:
   show-actuator: true
   packages-to-scan: com.spiritscribe
 
+# Spring Boot Admin 설정
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+        instance:
+          service-url: http://localhost:8080
+
 
