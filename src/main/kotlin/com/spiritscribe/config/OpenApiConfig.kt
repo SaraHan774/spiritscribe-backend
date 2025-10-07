@@ -5,6 +5,9 @@ import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.info.Contact
 import io.swagger.v3.oas.models.info.License
 import io.swagger.v3.oas.models.servers.Server
+import io.swagger.v3.oas.models.Components
+import io.swagger.v3.oas.models.security.SecurityScheme
+import io.swagger.v3.oas.models.security.SecurityRequirement
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -46,6 +49,20 @@ class OpenApiConfig {
                 Server()
                     .url("https://api.spiritscribe.com")
                     .description("프로덕션 서버")
+            )
+            .components(
+                Components()
+                    .addSecuritySchemes(
+                        "bearerAuth",
+                        SecurityScheme()
+                            .type(SecurityScheme.Type.HTTP)
+                            .scheme("bearer")
+                            .bearerFormat("JWT")
+                            .description("JWT 토큰을 입력하세요. 예: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
+                    )
+            )
+            .addSecurityItem(
+                SecurityRequirement().addList("bearerAuth")
             )
     }
 }
