@@ -1,0 +1,20 @@
+{
+  "agent": {
+    "name": "Core Infrastructure Agent",
+    "role": "데이터베이스, 인증, 사용자 관리, 보안",
+    "workspace": "agent1-core/",
+    "dependencies": [],
+    "outputs": ["사용자 도메인", "인증 시스템", "데이터베이스 스키마"]
+  },
+  "tasks": [
+    "데이터베이스 스키마 설계 및 구현",
+    "JWT 인증 시스템 구현",
+    "사용자 관리 API 구현",
+    "보안 및 Rate Limiting 구현"
+  ],
+  "collaboration": {
+    "notify": ["agent2", "agent3"],
+    "wait_for": [],
+    "deliverables": ["사용자 도메인 완성", "인증 시스템 완성"]
+  }
+}

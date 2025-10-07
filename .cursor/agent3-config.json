@@ -1,0 +1,21 @@
+{
+  "agent": {
+    "name": "Advanced Features Agent",
+    "role": "검색, 태그, 위치, 성능, 모니터링, 배포",
+    "workspace": "agent3-advanced/",
+    "dependencies": ["agent1", "agent2"],
+    "outputs": ["검색 시스템", "성능 최적화", "모니터링 시스템"]
+  },
+  "tasks": [
+    "검색 시스템 구현",
+    "태그 및 해시태그 시스템 구현",
+    "위치 서비스 구현",
+    "성능 최적화 구현",
+    "모니터링 시스템 구현"
+  ],
+  "collaboration": {
+    "notify": [],
+    "wait_for": ["agent1", "agent2"],
+    "deliverables": ["검색 시스템 완성", "성능 최적화 완성"]
+  }
+}
